@@ -1,0 +1,9 @@
+const videoLinks = [
+    { id: 1, name: 'Brain Parts & functions', thum: require('./assets/brain.jpg'), uri: 'https://firebasestorage.googleapis.com/v0/b/laravel-crud-acbfe.appspot.com/o/Brain_%20Parts%20%26%20functions%20(Fore%2C%20mid%20%26%20hind)%20%20_%20Control%20%26%20Coordination%20_%20Biology%20_%20Khan%20Academy.mkv?alt=media&token=02bac240-7254-4d02-829a-57cf6327db97' },
+    { id: 2, name: 'Introduction to slope Algebra', thum: require('./assets/darivative.jpg'), uri: 'https://firebasestorage.googleapis.com/v0/b/laravel-crud-acbfe.appspot.com/o/Derivative%20as%20a%20concept%20_%20Derivatives%20introduction%20_%20AP%20Calculus%20AB%20_%20Khan%20Academy.mkv?alt=media&token=e6900c66-655b-487d-a272-154b137a530a' },
+    { id: 3, name: 'Structure of human eye', thum: require('./assets/eye.jpg'), uri: 'https://firebasestorage.googleapis.com/v0/b/laravel-crud-acbfe.appspot.com/o/Introduction%20to%20slope%20_%20Algebra%20I%20_%20Khan%20Academy.mkv?alt=media&token=dc0f59a0-233c-48a5-9712-05381f4d7062' },
+    { id: 4, name: 'Derivative as a concept', thum: require('./assets/slope.jpg'), uri: 'https://firebasestorage.googleapis.com/v0/b/laravel-crud-acbfe.appspot.com/o/Structure%20of%20human%20eye%20(Hindi)%20_%20Human%20eye%20and%20the%20colourful%20world%20_%20Physics%20_%20Khan%20Academy.mkv?alt=media&token=9b772658-aa29-49ca-ac8e-51348bfd6c8b' },
+];
+const starterVideo = "https://firebasestorage.googleapis.com/v0/b/laravel-crud-acbfe.appspot.com/o/Brain_%20Parts%20%26%20functions%20(Fore%2C%20mid%20%26%20hind)%20%20_%20Control%20%26%20Coordination%20_%20Biology%20_%20Khan%20Academy.mkv?alt=media&token=02bac240-7254-4d02-829a-57cf6327db97"
+
+export { videoLinks, starterVideo }
