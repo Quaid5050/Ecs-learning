@@ -15,7 +15,7 @@ const App = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, padding: 5, marginTop: 20 }}>
+    <SafeAreaView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
         <Navigations />
       </ThemeProvider>

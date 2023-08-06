@@ -9,7 +9,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // import { AppThemeProvider } from '../components/ThemeProvider';
 
 //app screens stacks
-import { DashboardStack, SettingStack } from './App.navigations-stack';
+import { AccountStack, AddStack, DashboardStack, SettingStack, SubjectStack } from './App.navigations-stack';
 
 const AppNavigation = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -40,10 +40,20 @@ const AppNavigation = () => {
         <NavigationContainer >
             <Tab.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: "#ffc400", tabBarShowLabel: false, tabBarInactiveTintColor: "gray", tabBarActiveBackgroundColor: "#FFFFFF", tabBarInactiveBackgroundColor: "#FFFFFF" }}>
                 <Tab.Screen name="dashboard" component={DashboardStack}
-                    options={setTabOptions('Dashboard', 'family-restroom')} />
+                    options={setTabOptions('Dashboard', 'home')} />
+
+                <Tab.Screen
+                    name="subjects" component={SubjectStack}
+                    options={setTabOptions('Subjects', 'book')} />
+                <Tab.Screen
+                    name="add" component={AddStack}
+                    options={setTabOptions('add', 'add')} />
                 <Tab.Screen
                     name="setting" component={SettingStack}
-                    options={setTabOptions('Setting', 'shopping-basket')} />
+                    options={setTabOptions('Setting', 'settings')} />
+                <Tab.Screen
+                    name="account" component={AccountStack}
+                    options={setTabOptions('Account', 'person')} />
             </Tab.Navigator>
         </NavigationContainer >
 
