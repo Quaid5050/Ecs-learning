@@ -15,6 +15,8 @@ import SettingScreen from '../screens/app/setting/Setting-screen';
 //Subjects Screem
 import SubjectsScreen from '../screens/app/subjects/Subjects-screen';
 import SubjectTopicsScreen from '../screens/app/subjects/SubjectTopics-screen';
+import SubjectTopicScreen from '../screens/app/subjects/SubjectTopic-screen';
+import SubjectVideoScreen from '../screens/app/subjects/SubjectVideo-scree';
 
 
 //account screen
@@ -61,6 +63,8 @@ export const SubjectStack = () => {
         <Stack.Navigator>
             <Stack.Screen name="Subjects" component={SubjectsScreen} />
             <Stack.Screen name="SubjectTopics" component={SubjectTopicsScreen} />
+            <Stack.Screen name="SubjectTopic" component={SubjectTopicScreen} />
+            <Stack.Screen name="SubjectVideo" component={SubjectVideoScreen} />
         </Stack.Navigator>
     )
 }

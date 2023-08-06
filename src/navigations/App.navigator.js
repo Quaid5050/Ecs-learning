@@ -16,13 +16,13 @@ const AppNavigation = () => {
     useEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 3000);
+        }, 2000);
     }, []);
 
     if (isLoading) {
         return (
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-                <ActivityIndicator size="large" color="orange" />
+                <ActivityIndicator size="large" color="blue" />
             </View>
         );
     }
@@ -38,7 +38,7 @@ const AppNavigation = () => {
     const Tab = createBottomTabNavigator();
     return (
         <NavigationContainer >
-            <Tab.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: "#ffc400", tabBarShowLabel: false, tabBarInactiveTintColor: "gray", tabBarActiveBackgroundColor: "#FFFFFF", tabBarInactiveBackgroundColor: "#FFFFFF" }}>
+            <Tab.Navigator screenOptions={{ headerShown: false, tabBarActiveTintColor: "blue", tabBarShowLabel: false, tabBarInactiveTintColor: "gray", tabBarActiveBackgroundColor: "#FFFFFF", tabBarInactiveBackgroundColor: "#FFFFFF" }}>
                 <Tab.Screen name="dashboard" component={DashboardStack}
                     options={setTabOptions('Dashboard', 'home')} />
 

@@ -1,26 +1,33 @@
+// Navigations.js
+import React, { useEffect, useContext } from 'react';
+import { View, ActivityIndicator } from 'react-native';
 
-import React, { useEffect, useState } from 'react';
-import AuthNavigator from './Auth.navigator.js';
+import AuthNavigator from './Auth.navigator';
 import AppNavigator from './App.navigator';
+import { AuthContext } from '../services/Auth/AuthContext';
 
 const Navigations = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { isAuthenticated } = useContext(AuthContext);
+
+    // Optional: Add any loading state while checking authentication
+    // For example, you can show an ActivityIndicator while checking the authentication status
     useEffect(() => {
-        setTimeout(() => {
-            setIsAuthenticated(true)
-        }, 3000);
+        // Do any asynchronous checks here (e.g., check token, user authentication)
+        // If authenticated, setIsAuthenticated(true)
     }, []);
 
-    if (isAuthenticated) {
+    // Render the appropriate navigator based on authentication status
+    if (isAuthenticated === null) {
         return (
-            <AppNavigator />
-        )
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <ActivityIndicator size="large" color="blue" />
+            </View>
+        );
+    } else if (isAuthenticated) {
+        return <AppNavigator />;
     } else {
-        return (
-            <AuthNavigator />
-        )
+        return <AuthNavigator />;
     }
+};
 
-}
-
-export default Navigations
+export default Navigations;
