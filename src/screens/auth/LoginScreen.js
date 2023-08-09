@@ -1,6 +1,6 @@
 import { CommonActions, useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
-import { View, StyleSheet, SafeAreaView, TouchableOpacity, Text } from 'react-native';
+import { View, StyleSheet, SafeAreaView, TouchableOpacity, Text, Image } from 'react-native';
 import { Input, Icon } from 'react-native-elements';
 import { AuthContext } from '../../services/Auth/AuthContext';
 
@@ -17,6 +17,13 @@ const LoginPage = () => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.logoContainer}>
+                <Image
+                    style={styles.image}
+                    source={require('../../../assets/ecs-logo.png')}
+                    placeholder="ecs logo"
+                    contentFit="cover"
+                    transition={1000}
+                />
                 <Text h3 style={styles.logoText}>
                     ECS LEARNING{' '}
                     <Icon
@@ -29,10 +36,10 @@ const LoginPage = () => {
             </View>
             <View style={styles.formContainer}>
                 <Text style={styles.labelText}>
-                    Enter Student Code
+                    Enter phone number
                 </Text>
                 <Input
-                    placeholder="Student Code"
+                    placeholder="Enter phone number"
                     leftIcon={<Icon name="user" type="font-awesome" color="gray" />}
                     containerStyle={styles.inputContainer}
                     inputStyle={styles.inputText}
@@ -58,6 +65,7 @@ const LoginPage = () => {
                 >
                     <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
+                <Text style={styles.forgot}>Forgot Password?</Text>
             </View>
         </SafeAreaView>
     );
@@ -113,6 +121,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
     },
+    forgot: {
+        margin: 2,
+        color: "blue",
+    },
+    image: {
+
+    }
 });
 
 export default LoginPage;

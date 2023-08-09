@@ -17,7 +17,7 @@ import SubjectsScreen from '../screens/app/subjects/Subjects-screen';
 import SubjectTopicsScreen from '../screens/app/subjects/SubjectTopics-screen';
 import SubjectTopicScreen from '../screens/app/subjects/SubjectTopic-screen';
 import SubjectVideoScreen from '../screens/app/subjects/SubjectVideo-scree';
-
+import SubjectNotesScreen from '../screens/app/subjects/SubjectNotes-screen';
 
 //account screen
 import AccountScreen from '../screens/app/account/Account-screen';
@@ -26,6 +26,7 @@ import AccountScreen from '../screens/app/account/Account-screen';
 
 //addscreen {currently name is not clearly defined we will change it later }
 import AddScreen from '../screens/app/add/Add-screen';
+
 
 
 
@@ -65,6 +66,7 @@ export const SubjectStack = () => {
             <Stack.Screen name="SubjectTopics" component={SubjectTopicsScreen} />
             <Stack.Screen name="SubjectTopic" component={SubjectTopicScreen} />
             <Stack.Screen name="SubjectVideo" component={SubjectVideoScreen} />
+            <Stack.Screen name="SubjectNotes" component={SubjectNotesScreen} />
         </Stack.Navigator>
     )
 }

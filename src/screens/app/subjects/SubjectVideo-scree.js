@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, SafeAreaView } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, SafeAreaView, ScrollView } from 'react-native';
 import { Video, ResizeMode } from 'expo-av';
 import { MaterialIcons } from '@expo/vector-icons';
 import * as ScreenOrientation from 'expo-screen-orientation';
@@ -8,16 +8,28 @@ const SubjectVideo = ({ navigation, route }) => {
     const video = useRef(null);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [status, setStatus] = useState({});
-    const [url, setUrl] = useState("https://example.com/placeholder_video.mp4"); // Replace with your video URL
+    const [url, setUrl] = useState("");
     const [videoTitle, setVideoTitle] = useState("");
     const [isPlaying, setIsPlaying] = useState(true);
 
     useEffect(() => {
-        if (isFullScreen) {
-            ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-        } else {
+        // this time now need to turn on the Auto rotata automatically when screen is in full mode the orientatio is perform
+        const handleOrientationChange = async () => {
+            try {
+                if (isFullScreen) {
+                    await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.ALL);
+                } else {
+                    await ScreenOrientation.unlockAsync();
+                }
+            } catch (error) {
+                console.error('Error locking/unlocking screen orientation:', error);
+            }
+        };
+
+        handleOrientationChange();
+        return () => {
             ScreenOrientation.unlockAsync();
-        }
+        };
     }, [isFullScreen]);
 
     useLayoutEffect(() => {
@@ -25,6 +37,9 @@ const SubjectVideo = ({ navigation, route }) => {
         navigation.setOptions({ title: subjectName });
     }, [navigation]);
 
+    const onFullscreenChange = (isFullscreen) => {
+        // setInFullscreen(isFullscreen);
+    };
 
     useEffect(() => {
         const videoUrl = route.params.videoUrl;
@@ -41,6 +56,7 @@ const SubjectVideo = ({ navigation, route }) => {
     const handlePlaybackStatusUpdate = (playbackStatus) => {
         setIsPlaying(playbackStatus.isPlaying);
         setStatus(playbackStatus);
+
     };
 
     return (
@@ -50,32 +66,43 @@ const SubjectVideo = ({ navigation, route }) => {
                     <MaterialIcons name="video-library" size={30} color="black" />
                     <Text style={styles.headerText}>{videoTitle}</Text>
                 </View>
-                <View style={[styles.videoContainer, { backgroundColor: 'red' }]}>
-                    <Video
-                        ref={video}
-                        style={[styles.video, { backgroundColor: 'black' }]}
-                        source={{
-                            uri: url,
-                        }}
-                        useNativeControls
-                        resizeMode={ResizeMode.CONTAIN}
-                        isLooping
-                        isMuted={false}
-                        shouldPlay={isPlaying}
-                        onPlaybackStatusUpdate={handlePlaybackStatusUpdate}
-                    />
-                </View>
-                <View style={styles.flatListContainer}>
-                    <View style={styles.playButtonContainer}>
-                        <TouchableOpacity style={styles.playButton} onPress={togglePlayback}>
-                            <MaterialIcons
-                                name={isPlaying ? 'pause' : 'play-arrow'}
-                                size={40}
-                                color="white"
-                            />
-                        </TouchableOpacity>
+
+                <ScrollView style={styles.videoScrollview}>
+                    <View style={[styles.videoContainer, { backgroundColor: 'red' }]}>
+                        <Video
+                            ref={video}
+                            style={[styles.video, { backgroundColor: 'black' }]}
+                            source={{
+                                uri: url,
+                            }}
+                            useNativeControls
+                            resizeMode={ResizeMode.CONTAIN}
+                            onFullscreenUpdate={(e) => {
+                                if (e.fullscreenUpdate === 1) {
+                                    setIsFullScreen(true);
+                                } else {
+                                    setIsFullScreen(false);
+                                }
+                            }}
+                            isLooping
+                            isMuted={false}
+                            shouldPlay={isPlaying}
+                            onPlaybackStatusUpdate={handlePlaybackStatusUpdate}
+                        />
                     </View>
-                </View>
+                    <View style={styles.flatListContainer}>
+                        <View style={styles.playButtonContainer}>
+                            <TouchableOpacity style={styles.playButton} onPress={togglePlayback}>
+                                <MaterialIcons
+                                    name={isPlaying ? 'pause' : 'play-arrow'}
+                                    size={40}
+                                    color="white"
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </ScrollView>
+
 
             </View>
         </SafeAreaView>
@@ -135,6 +162,9 @@ const styles = StyleSheet.create({
         padding: 5
 
     },
+    videoScrollview: {
+        flex: 1,
+    }
 });
 
 export default SubjectVideo;
