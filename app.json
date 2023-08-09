@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "VideoPlayer",
-    "slug": "VideoPlayer",
+    "name": "ecs-learning",
+    "slug": "ecs-learning",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,29 +15,29 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ecs5050.ecslearning"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.test5050.VideoPlayer"
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "package": "com.ecs5050.ecslearning"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      [
-        "expo-screen-orientation",
-        {
-          "initialOrientation": "DEFAULT"
-        }
-      ]
+      
     ],
     "extra": {
       "eas": {
-        "projectId": "aa23077c-f137-4a89-84eb-708cd175a581"
+        "projectId": "427386ad-f167-40e6-bc32-f4ca3f3fe1f0"
       }
     }
   }

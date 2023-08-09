@@ -1,18 +1,8 @@
 import React from "react"
 
 import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { subjects } from "./data/subjectsData";
 const Subjects = ({ navigation }) => {
-
-
-    const subjects = [
-        { id: '1', subject: 'Mathematics', image: require('./data/images/physics.jpg') },
-        { id: '2', subject: 'Science', image: require('./data/images/physics.jpg') },
-        { id: '3', subject: 'History', image: require('./data/images/physics.jpg') },
-        { id: '4', subject: 'English', image: require('./data/images/physics.jpg') },
-        { id: '5', subject: 'Computer Science', image: require('./data/images/physics.jpg') },
-        { id: '6', subject: 'Art', image: require('./data/images/physics.jpg') },
-
-    ];
 
     const handleSubjectPress = (subjectId, subjectName) => {
         console.log(subjectId, subjectName)
@@ -54,8 +44,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     image: {
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         borderRadius: 25,
         marginRight: 10,
     },

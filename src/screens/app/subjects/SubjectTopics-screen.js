@@ -1,38 +1,21 @@
 // TopicsList.js
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { ListItem, Icon, Divider } from 'react-native-elements';
+import { unitsBySubject } from './data/subjectsData';
 
-const data = [
-    {
-        id: 'unit1', // Add the id for each unit
-        unit: 'Unit 1: Electric charge and fields',
-        topics: [
-            { id: '1', name: 'Topic 1' },
-            { id: '2', name: 'Topic 2' },
-            { id: '3', name: 'Topic 3' },
-            { id: '4', name: 'Topic 4' },
-        ],
-    },
-    {
-        id: 'unit2', // Add the id for each unit
-        unit: 'Unit 2: Electric fields',
-        topics: [
-            { id: '5', name: 'Topic 5' },
-            { id: '6', name: 'Topic 6' },
-            { id: '7', name: 'Topic 7' },
-            { id: '8', name: 'Topic 8' },
-        ],
-    },
-];
 
 const SubjectTopics = ({ navigation, route }) => {
+    const [subjectId, setSubjectId] = useState(null);
 
     useLayoutEffect(() => {
         const subjectName = route.params.subjectName;
+        const subjectId = route.params.subjectId;
+        setSubjectId(subjectId);
         navigation.setOptions({ title: subjectName });
-    }, [navigation]);
+    }, [navigation, subjectId]);
 
+    const units = unitsBySubject[subjectId];
     const handleTopicPress = (topicId, topicName) => {
         // Handle the press action for each topic
         console.log('Topic Pressed:', topicId);
@@ -82,7 +65,7 @@ const SubjectTopics = ({ navigation, route }) => {
 
     return (
         <FlatList
-            data={data}
+            data={units}
             renderItem={renderUnit}
             keyExtractor={(item) => item.id} // Use the 'id' as the keyExtractor for the outer FlatList
             style={styles.container}

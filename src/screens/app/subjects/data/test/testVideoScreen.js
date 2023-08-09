@@ -1,19 +1,19 @@
-import React, { useLayoutEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView, Linking } from "react-native";
+import React, { useLayoutEffect } from "react";
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ScrollView } from "react-native";
 import { Divider, Icon } from "react-native-elements";
-import { VideoAndNotes } from "./data/subjectsData";
 
+const videosAndTopics = [
+    { id: "v1", title: "Video 1", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+    { id: "v2", title: "Video 2", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+    { id: "v3", title: "Video 3", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+    { id: "v4", title: "Video 3", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+    { id: "v5", title: "Video 3", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+    { id: "v6", title: "Video 3", url: "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4" },
+];
 const SubjectTopic = ({ route, navigation }) => {
-    //use for backend to get specific unit
-
-    const { unitId } = route.params;
-    const [mockTestLink, setMockTestLink] = useState("");
-    const unit = VideoAndNotes;
-
+    const { topicName } = route.params;
 
     useLayoutEffect(() => {
-        const mockTestLink = VideoAndNotes.mockTestLink;
-        setMockTestLink(mockTestLink);
         const subjectName = route.params.subjectName;
         navigation.setOptions({ title: subjectName });
     }, [navigation]);
@@ -28,49 +28,37 @@ const SubjectTopic = ({ route, navigation }) => {
         });
     };
 
-    const openMockTestInBrowser = () => {
-        const url = mockTestLink;
-        Linking.openURL(url).catch((err) => console.error('An error occurred', err));
-    };
-
     const renderVideo = ({ item }) => (
         <View style={styles.videoItemContainer}>
             <TouchableOpacity style={styles.videoContainer} onPress={() => handleVideoPress(item.url, item.title)}>
                 <Icon name="play-circle" type="font-awesome" color="#FF0000" size={28} />
                 <Text style={styles.videoTitle}>{item.title}</Text>
             </TouchableOpacity>
-            {item.notes.map(note => (
-                <TouchableOpacity key={note.id} onPress={() => {
-                    console.log(`Press ${note.title} note`)
-                    navigation.navigate("SubjectNotes");
-                }}>
-                    <View style={styles.chapterReviewContainer}>
-                        <Icon name="file-text" type="font-awesome" color="#0000FF" size={28} />
-                        <Text style={styles.itemTitle}>{note.title}</Text>
-                    </View>
-                </TouchableOpacity>
-            ))}
+            <TouchableOpacity onPress={() => console.log("press chapter review")}>
+                <View style={styles.chapterReviewContainer}>
+                    <Icon name="book" type="font-awesome" color="#0000FF" size={28} />
+                    <Text style={styles.itemTitle}>{topicName} review</Text>
+                </View>
+            </TouchableOpacity>
         </View>
     );
 
     return (
         <FlatList
-            data={unit.videos}
+            data={videosAndTopics}
             renderItem={renderVideo}
             keyExtractor={(item) => item.id}
             ListHeaderComponent={
                 <View style={styles.topicContainer}>
-                    <Text style={styles.topicTitle}>{unit.unitTitle}</Text>
+                    <Text style={styles.topicTitle}>{topicName}</Text>
                 </View>
             }
             ListFooterComponent={
-                <TouchableOpacity onPress={() => {
-                    openMockTestInBrowser()
-                }}>
+                <TouchableOpacity onPress={() => console.log("press mock test")}>
                     <View style={styles.mockTestContainer}>
                         <Icon name="list-alt" type="font-awesome" color="#0000FF" size={28} />
                         <View style={styles.mockTestInfo}>
-                            <Text style={styles.itemTitle}>Mock tests on this unit</Text>
+                            <Text style={styles.itemTitle}>Mock tests on this topic</Text>
                             <Text style={styles.percentText}>50%</Text>
                         </View>
                     </View>
