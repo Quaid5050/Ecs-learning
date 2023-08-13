@@ -1,5 +1,5 @@
 import { CommonActions, useNavigation } from '@react-navigation/native';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, StyleSheet, SafeAreaView, TouchableOpacity, Text, Image } from 'react-native';
 import { Input, Icon } from 'react-native-elements';
 import { AuthContext } from '../../services/Auth/AuthContext';
@@ -7,10 +7,11 @@ import { AuthContext } from '../../services/Auth/AuthContext';
 const LoginPage = () => {
     const navigation = useNavigation();
     const { login } = useContext(AuthContext); // Use
+    const [studentId, setStudentId] = useState(907);
     const handleLogin = () => {
         // Your login logic here...
         // If login is successful, navigate to the main app (AccountStack)
-        login()
+        login(studentId);
 
     };
 

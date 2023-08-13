@@ -14,11 +14,13 @@ import SettingScreen from '../screens/app/setting/Setting-screen';
 
 //Subjects Screem
 import SubjectsScreen from '../screens/app/subjects/Subjects-screen';
-import SubjectTopicsScreen from '../screens/app/subjects/SubjectTopics-screen';
+import SubjectChaptersScreen from '../screens/app/subjects/SubjectChapters-screen';
 import SubjectTopicScreen from '../screens/app/subjects/SubjectTopic-screen';
 import SubjectVideoScreen from '../screens/app/subjects/SubjectVideo-scree';
 import SubjectNotesScreen from '../screens/app/subjects/SubjectNotes-screen';
-
+import SubjectYoutubeVideoScreen from '../screens/app/subjects/SubjectYoutubeVideo-screen';
+import SubjectTopicPdfScreen from '../screens/app/subjects/SubjectTopicPdf-screen';
+import SubjectTopicTextScreen from '../screens/app/subjects/SubjectTopicText-screen';
 //account screen
 import AccountScreen from '../screens/app/account/Account-screen';
 
@@ -63,9 +65,12 @@ export const SubjectStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Subjects" component={SubjectsScreen} />
-            <Stack.Screen name="SubjectTopics" component={SubjectTopicsScreen} />
+            <Stack.Screen name="SubjectChapters" component={SubjectChaptersScreen} />
             <Stack.Screen name="SubjectTopic" component={SubjectTopicScreen} />
             <Stack.Screen name="SubjectVideo" component={SubjectVideoScreen} />
+            <Stack.Screen name="SubjectYoutubeVideo" component={SubjectYoutubeVideoScreen} />
+            <Stack.Screen name="SubjectTopicPdf" component={SubjectTopicPdfScreen} />
+            <Stack.Screen name="SubjectTopicText" component={SubjectTopicTextScreen} />
             <Stack.Screen name="SubjectNotes" component={SubjectNotesScreen} />
         </Stack.Navigator>
     )

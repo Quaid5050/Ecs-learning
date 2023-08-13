@@ -15,19 +15,19 @@ const unitsBySubject = {
         {
             id: 'unit1',
             unit: 'Unit 1: Numbers and Algebra',
-            topics: [
+            chapters: [ // Changed from topics
                 { id: '1', name: 'Introduction to Numbers' },
                 { id: '2', name: 'Basic Algebraic Equations' },
-                // ... Other topics
+                // ... Other chapters
             ],
         },
         {
             id: 'unit2',
             unit: 'Unit 2: Geometry and Trigonometry',
-            topics: [
+            chapters: [ // Changed from topics
                 { id: '3', name: 'Geometric Shapes' },
                 { id: '4', name: 'Trigonometric Functions' },
-                // ... Other topics
+                // ... Other chapters
             ],
         },
     ],
@@ -35,102 +35,23 @@ const unitsBySubject = {
         {
             id: 'unit1',
             unit: 'Unit 1: Mechanics',
-            topics: [
+            chapters: [ // Changed from topics
                 { id: '5', name: 'Kinematics' },
                 { id: '6', name: 'Forces and Laws of Motion' },
-                // ... Other topics
+                // ... Other chapters
             ],
         },
         {
             id: 'unit2',
             unit: 'Unit 2: Waves and Optics',
-            topics: [
+            chapters: [ // Changed from topics
                 { id: '7', name: 'Wave Properties' },
                 { id: '8', name: 'Optics and Light' },
-                // ... Other topics
+                // ... Other chapters
             ],
         },
     ],
-    '3': [ //SubjectId
-        {
-            id: 'unit1',
-            unit: 'Unit 1: Cell Biology',
-            topics: [
-                { id: '9', name: 'Introduction to Cells' },
-                { id: '10', name: 'Cell Organelles and Functions' },
-                // ... Other topics
-            ],
-        },
-        {
-            id: 'unit2',
-            unit: 'Unit 2: Genetics and Evolution',
-            topics: [
-                { id: '11', name: 'Genetic Inheritance' },
-                { id: '12', name: 'Natural Selection and Evolution' },
-                // ... Other topics
-            ],
-        },
-    ],
-    '4': [//SubjectId
-        {
-            id: 'unit1',
-            unit: 'Unit 1: Literary Analysis',
-            topics: [
-                { id: '13', name: 'Introduction to Literature' },
-                { id: '14', name: 'Analyzing Literary Elements' },
-                // ... Other topics
-            ],
-        },
-        {
-            id: 'unit2',
-            unit: 'Unit 2: Creative Writing',
-            topics: [
-                { id: '15', name: 'Writing Fiction' },
-                { id: '16', name: 'Poetry and Expressive Writing' },
-                // ... Other topics
-            ],
-        },
-    ],
-    '5': [//SubjectId
-        {
-            id: 'unit1',
-            unit: 'Unit 1: Programming Fundamentals',
-            topics: [
-                { id: '17', name: 'Introduction to Programming' },
-                { id: '18', name: 'Data Structures and Algorithms' },
-                // ... Other topics
-            ],
-        },
-        {
-            id: 'unit2',
-            unit: 'Unit 2: Web Development',
-            topics: [
-                { id: '19', name: 'HTML and CSS Basics' },
-                { id: '20', name: 'JavaScript and Interactivity' },
-                // ... Other topics
-            ],
-        },
-    ],
-    '6': [//SubjectId
-        {
-            id: 'unit1',
-            unit: 'Unit 1: Art History',
-            topics: [
-                { id: '21', name: 'Art Movements and Styles' },
-                { id: '22', name: 'Famous Artists and Their Works' },
-                // ... Other topics
-            ],
-        },
-        {
-            id: 'unit2',
-            unit: 'Unit 2: Visual Arts Techniques',
-            topics: [
-                { id: '23', name: 'Drawing and Sketching' },
-                { id: '24', name: 'Painting and Color Theory' },
-                // ... Other topics
-            ],
-        },
-    ],
+    // ... Repeat for other subjects
 };
 
 const VideoAndNotes = {
