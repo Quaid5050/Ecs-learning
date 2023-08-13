@@ -1,13 +1,38 @@
-import React from "react"
+import React, { useContext, useEffect, useState } from "react";
+import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import axios from 'axios';
+import { AuthContext } from "../../.././services/Auth/AuthContext";
 
-import { View, Text, FlatList, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { subjects } from "./data/subjectsData";
 const Subjects = ({ navigation }) => {
+    const { studentId } = useContext(AuthContext);
+    const [subjects, setSubjects] = useState([]);
+    const [isLoading, setIsLoading] = useState(true); // State to track loading status
+
+    useEffect(() => {
+        fetchSubjects();
+    }, [subjects]); // Fetch data whenever the studentId changes
+
+    const fetchSubjects = async () => {
+        try {
+            const response = await axios.get(`https://learning.org.in/ecs-app-data/students-wise-subjects.php?stu_code=${studentId}`);
+            const data = response.data;
+
+            const subjectsArray = Object.keys(data).map(key => ({
+                id: key,
+                subject: data[key].name,
+                image: { uri: data[key].icon },
+            }));
+
+            setSubjects(subjectsArray);
+            setIsLoading(false); // Data has been fetched, set loading to false
+        } catch (error) {
+            console.error('Error fetching subjects:', error);
+            setIsLoading(false); // Set loading to false even in case of an error
+        }
+    };
 
     const handleSubjectPress = (subjectId, subjectName) => {
-        console.log(subjectId, subjectName)
-        //navigate to next screen with subjectId
-        navigation.navigate('SubjectTopics', { subjectId: subjectId, subjectName: subjectName });
+        navigation.navigate('SubjectChapters', { subjectId, subjectName });
     }
 
     const renderItem = ({ item }) => (
@@ -21,11 +46,15 @@ const Subjects = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <FlatList
-                data={subjects}
-                renderItem={renderItem}
-                keyExtractor={(item) => item.id}
-            />
+            {isLoading ? (
+                <ActivityIndicator size="large" color="#0000ff" style={{ marginTop: 200 }} />
+            ) : (
+                <FlatList
+                    data={subjects}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item.id}
+                />
+            )}
         </View>
     );
 }
@@ -52,9 +81,7 @@ const styles = StyleSheet.create({
     subject: {
         fontSize: 14,
         fontWeight: "bold",
-
     },
 });
-
 
 export default Subjects;

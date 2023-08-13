@@ -1,9 +1,16 @@
-import React from "react"
+import React, { useContext } from "react"
+import { View } from "react-native";
 import { Text } from "react-native-elements"
+import { AuthContext } from "../../../services/Auth/AuthContext"
 
 const DashboardScreen = () => {
+    const { studentId } = useContext(AuthContext);
+   
     return (
-        <Text>DashboardScreen</Text>
+        <View>
+            <Text>Dashboard Screen </Text>
+            <Text>Student ID {studentId}</Text>
+       </View>
     )
 }
 
