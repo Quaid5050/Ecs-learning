@@ -8,7 +8,7 @@ const SubjectVideo = ({ navigation, route }) => {
     const video = useRef(null);
     const [isFullScreen, setIsFullScreen] = useState(false);
     const [status, setStatus] = useState({});
-    const [url, setUrl] = useState("");
+    const [url, setUrl] = useState(route.params.videoUrl);
     const [videoTitle, setVideoTitle] = useState("");
     const [isPlaying, setIsPlaying] = useState(true);
 
@@ -45,7 +45,7 @@ const SubjectVideo = ({ navigation, route }) => {
         const videoUrl = route.params.videoUrl;
         const videoTitle = route.params.videoTitle;
         setVideoTitle(videoTitle);
-        setUrl(videoUrl);
+        // setUrl(videoUrl);
         setIsPlaying(true)
     }, [url])
 

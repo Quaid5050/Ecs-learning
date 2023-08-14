@@ -42,11 +42,12 @@ const SubjectChapters = ({ navigation, route }) => {
         }
     };
 
-    const handleChapterPress = (chapterId) => {
+    const handleChapterPress = (chapterId,chapterName) => {
         navigation.navigate("SubjectTopic", {
             subjectId,
             chapterId,
             subjectName,
+            chapterName,
         });
     }
 
@@ -54,7 +55,7 @@ const SubjectChapters = ({ navigation, route }) => {
     const renderChapter = ({ item }) => (
         <View style={styles.chapterContainer}>
             <TouchableOpacity onPress={() => {
-                handleChapterPress(item.id);
+                handleChapterPress(item.id,item.chapter);
             }}>
                 <View style={{ flexDirection: "row", alignItems: "center", padding: 8 }}>
                     <Icon name="book-open-page-variant" type="material-community" color="#0000FF" style={{ margin: 5 }} />

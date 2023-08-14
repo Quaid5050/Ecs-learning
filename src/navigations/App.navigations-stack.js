@@ -16,7 +16,7 @@ import SettingScreen from '../screens/app/setting/Setting-screen';
 import SubjectsScreen from '../screens/app/subjects/Subjects-screen';
 import SubjectChaptersScreen from '../screens/app/subjects/SubjectChapters-screen';
 import SubjectTopicScreen from '../screens/app/subjects/SubjectTopic-screen';
-import SubjectVideoScreen from '../screens/app/subjects/SubjectVideo-scree';
+import SubjectVideoScreen from '../screens/app/subjects/SubjectVideo-screen';
 import SubjectNotesScreen from '../screens/app/subjects/SubjectNotes-screen';
 import SubjectYoutubeVideoScreen from '../screens/app/subjects/SubjectYoutubeVideo-screen';
 import SubjectTopicPdfScreen from '../screens/app/subjects/SubjectTopicPdf-screen';
